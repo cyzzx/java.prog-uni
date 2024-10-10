@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class PositivesNegativesAverage
+{
+    public static void main(String[] args)
+    {
+        Scanner input=new Scanner(System.in);
+        int n, nrneg = 0, nrpos = 0, counter = 0;
+        double avg, total= 0.0;
+
+        System.out.println("Enter an integer, the input ends if it is 0: ");
+        while(true)
+        {
+            n = input.nextInt();
+
+            if(n == 0)
+            {
+                break;
+            }
+
+            if(n > 0)
+            {
+                nrpos++;
+            }
+
+            if(n < 0)
+            {
+                nrneg++;
+            }
+
+            total += n;
+            counter++;
+
+        }
+
+            avg = (double) total / counter;
+
+            System.out.printf("The number of positives is %d\n", nrpos);
+            System.out.printf("The number of negatives is %d\n", nrneg);
+            System.out.printf("The total is %.1f\n", total);
+            System.out.printf("The average is %.2f\n", avg);
+
+        input.close();
+    }
+    
+
+}
