@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class LoanAmortization
+{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Loan Amount: ");
+        double loanAmount = input.nextDouble();
+
+        System.out.println("Number of Years: ");
+        int years = input.nextInt();
+
+        System.out.println("Annual Interest Rate: ");
+        double annualRate = input.nextDouble();
+
+        //calculate monthly payment
+        double monthlyRate = annualRate / 1200; //converting both to monthly compounds and decimal form (/12 /100).
+        int months = years * 12;
+        double monthlyPayment = loanAmount * monthlyRate / (1 - Math.pow(1+monthlyRate, -1 * months));
+
+        // Display monthly payment and total payment
+        System.out.printf("Monthly Payment: %.2f\n", monthlyPayment);
+        System.out.printf("Total Payment: %.2f\n", monthlyPayment * months);
+
+        double balance = loanAmount;
+        System.out.println("Payment#   Interest   Principal   Balance");
+        for (int i = 1; i <= months; i++) 
+        {
+            double interest = balance * monthlyRate;
+            double principal = monthlyPayment - interest;
+            balance -= principal;
+            System.out.printf("%d          %.2f       %.2f       %.2f\n", i, interest, principal, balance);
+        }
+
+        input.close();
+    }
+}
