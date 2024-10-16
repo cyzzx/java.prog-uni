@@ -1,4 +1,4 @@
-public class week2 
+public class StudentGradeAverages
 {
 	public static double[] calculateAverages(int[][] grades)
 	{
@@ -35,7 +35,30 @@ public class week2
 	
 	public static void sort(String[] name, int[][] grade, double[] average)
 	{
-		
+		for(int i = 0; i < average.length - 1; i++) 
+        {
+            for(int j = i + 1; j < average.length; j++)
+            {
+                if(average[j] > average[i])
+                {
+                    //sort averages
+                    double tempavg = average[i];
+                    average[i] = average[j];
+                    average[j] = tempavg; 
+                    	
+                    //sort names
+                    String tempname = name[i];
+                    name[i] = name[j];
+                    name[j] = tempname;
+
+                    //sort grades
+                    int[] tempgrade = grade[i];
+                    grade[i] = grade[j];
+                    grade[j] = tempgrade;
+                }
+            }
+        }
+
 	}
 	
 	public static void main(String[] args)
@@ -49,8 +72,11 @@ public class week2
 		
 		double[] averages = calculateAverages(grades);
 		printArray(names, grades, averages);
+        System.out.println("-------------------------------------- \n");
+        System.out.println("Sorted list by average: \n");
+        sort(names, grades, averages);
+        printArray(names, grades, averages);
 		
 	}
-	
 	
 }
