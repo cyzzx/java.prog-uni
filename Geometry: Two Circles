@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class TwoCircles
+{       
+    public static void insideOrOverlap(int x1, int y1, int rad1, int x2, int y2, int rad2)
+    {
+        double distance = Math.sqrt(Math.pow((x2-x1), 2) + Math.pow((y2-y1), 2));
+        if(distance <= Math.abs(rad1 - rad2))
+        {
+            System.out.println("Circle 2 is inside Circle 1");
+        }
+
+        else if(distance <= (rad1 + rad2))
+        {
+            System.out.println("Cicle 2 overlaps Circle 1");
+        }
+    }
+
+    public static void main(String[] args)
+	{
+		int x1, y1, radius1, x2, y2, radius2;
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter coordinates and radius for the first circle: ");
+        x1 = input.nextInt();
+        y1 = input.nextInt();
+        radius1 = input.nextInt();
+
+        System.out.println("Enter coordinates and radius for the second circle: ");
+        x2 = input.nextInt();
+        y2 = input.nextInt();
+        radius2 = input.nextInt();
+
+        insideOrOverlap(x1, y1, radius1, x2, y2, radius2);
+
+        input.close();
+
+	}
+	
+}
