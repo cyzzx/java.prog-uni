@@ -1,0 +1,42 @@
+public class MinAndMax
+{   
+    public static int max(int ... n) // creates an array with an undetermined number of elements
+    {
+        int max = n[0];
+        for(int i = 0; i < n.length; i++)
+        {
+            if(n[i] > max)
+            {
+                max = n[i];
+            }
+        }
+
+        return max;
+
+    }
+
+    public static int min(int ... n)
+    {
+        int min = n[0];
+        for(int i = 0; i < n.length; i++)
+        {
+            if(n[i] < min)
+            {
+                min = n[i];
+            }
+        }
+
+        return min;
+
+    }
+
+    public static void main(String[] args)
+	{
+		int maxResult = max(2, 5, 19, 28, 17, 62, 12, 91);
+        int minResult = min(2, 5, 19, 28, 17, 62, 12, 91);
+
+        System.out.println("The maximum digit is: " + maxResult);
+        System.out.println("The minimum digit is: " + minResult);
+	}
+	
+}
