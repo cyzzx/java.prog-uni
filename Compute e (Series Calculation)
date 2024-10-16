@@ -1,0 +1,35 @@
+public class computeSeries
+{       
+    public static int factorial(int n)
+    {
+        if (n == 0)
+        {
+            return 1;
+        }
+
+        else
+        {
+            return n * factorial(n-1);
+        }
+    }
+    public static double calculateSeries(int n)
+    {
+        double e = 0.0;
+        for(int i = 0; i <=n; i++)
+        {
+            e += (1.0/factorial(i));
+        }
+
+        return e;
+    }
+
+    public static void main(String[] args)
+	{
+        for (int i = 0; i <= 20; i += 5)  //small sample
+        { 
+            System.out.println("Series for i = " + i);
+            System.out.println(calculateSeries(i));
+        }
+
+	}
+}
