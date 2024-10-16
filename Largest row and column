@@ -1,0 +1,102 @@
+import java.util.Random;
+
+public class LargestRowAndColumn 
+{
+	public static void printArray(int [][] arr)
+	{
+		for(int i = 0; i < 4; i++)
+		{
+			for(int j = 0; j < 4; j++)
+			{
+				System.out.print(arr[i][j] + " ");
+			}
+			
+			System.out.println();
+		}
+	}
+	
+	public static int[][] binaryArray(int [][] arr)
+	{
+		Random rndm = new Random();
+		
+		for(int i = 0; i < 4; i++)
+		{
+			for(int j = 0; j < 4; j++)
+			{
+				arr[i][j] = rndm.nextInt(2);
+			}
+		}
+		
+		return arr;
+
+	}
+	
+	public static int largestRowIndex(int [][] arr)
+	{
+		int[] counter = new int[4];
+		
+		for(int i = 0; i < 4; i++)
+		{
+			for(int j = 0; j < 4; j++)
+			{
+				counter[i] += arr[i][j];
+			}
+		}
+		
+		int maxIndex = 0;
+		int maxValue = 0;
+		for(int k = 0; k < 4; k++)
+		{
+			if(counter[k] > maxValue)
+			{
+				maxValue = counter[k];
+				maxIndex = k;
+			}
+		}
+		
+		return maxIndex;
+	}
+	
+	public static int largestColumnIndex(int [][] arr)
+	{
+		int [] counter = new int[4];
+		
+		for(int i = 0; i < 4; i++)
+		{
+			for(int j = 0; j < 4; j++)
+			{
+				counter[i] += arr[j][i];
+			}
+		}
+		
+		int maxIndex = 0;
+		int maxValue = 0;
+		for(int k = 0; k < 4; k++)
+		{
+			if(counter[k] > maxValue)
+			{
+				maxValue = counter[k];
+				maxIndex = k;
+			}
+		}
+		
+		return maxIndex;
+	}
+	
+	public static void main(String[] args)
+	{
+		int [][] emptyarray = new int[4][4];
+		
+		int [][] filledarray = binaryArray(emptyarray);
+		
+		int rowmax = largestRowIndex(filledarray);
+		int colmax = largestColumnIndex(filledarray);
+		printArray(filledarray);
+		
+		System.out.println();
+		System.out.println("The largest row index: " + rowmax);
+		System.out.println("The largest column index: " + colmax);
+	}
+	
+	
+}
