@@ -1,0 +1,56 @@
+public class week2 
+{
+	public static double[] calculateAverages(int[][] grades)
+	{
+		int[] sum = {0, 0, 0, 0};
+		double[] studentaverage = new double[4];
+		
+		for(int i = 0; i < 4; i++)
+		{
+			for(int j = 0; j < 5; j++)
+			{
+				sum[i] += grades[i][j];
+			}
+			
+			studentaverage[i] = sum[i] / 5.0;
+		}
+		
+		return studentaverage;
+	}
+	
+	public static void printArray(String[] name, int[][] grade, double[] average)
+	{
+		for(int i = 0; i < 4; i++)
+		{
+			System.out.print(name[i] + " ");
+			for(int j = 0; j < 5; j++)
+			{
+				System.out.print(grade[i][j] + " ");
+			}
+			
+			System.out.print(average[i]);
+			System.out.println();
+		}
+	}
+	
+	public static void sort(String[] name, int[][] grade, double[] average)
+	{
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		String[] names = {"Jack", "Robert", "Edward", "Eddie"};
+		int[][] grades = {	{76, 54, 89, 76, 98},
+							{34, 65, 23, 87, 100},
+							{80, 65, 97, 54, 94},
+							{63, 75, 33, 75, 87}  };
+		
+		
+		double[] averages = calculateAverages(grades);
+		printArray(names, grades, averages);
+		
+	}
+	
+	
+}
